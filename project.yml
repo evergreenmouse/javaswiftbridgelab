@@ -1,0 +1,71 @@
+name: JavaSwiftBridgeLab
+options:
+  bundleIdPrefix: com.example
+  deploymentTarget:
+    iOS: "26.0"
+  xcodeVersion: "27.0"
+packages:
+  LegacySampleMock:
+    path: Packages/LegacySampleMock
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    SWIFT_STRICT_CONCURRENCY: complete
+    # No App Intents declarations: omit the unused extraction step and its tool warning.
+    LM_SKIP_METADATA_EXTRACTION: YES
+    IPHONEOS_DEPLOYMENT_TARGET: "26.0"
+    TARGETED_DEVICE_FAMILY: "1,2"
+targets:
+  JavaSwiftBridgeLab:
+    type: application
+    platform: iOS
+    sources:
+      - path: Application
+    info:
+      path: Application/Resources/Info.plist
+      properties:
+        UTExportedTypeDeclarations:
+          - UTTypeIdentifier: com.example.JavaSwiftBridgeLab.sample-card
+            UTTypeDescription: Sample card
+            UTTypeConformsTo: [public.data]
+    dependencies:
+      - package: LegacySampleMock
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.JavaSwiftBridgeLab.v2
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Java Swift Lab
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight
+        CODE_SIGN_STYLE: Automatic
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+  JavaSwiftBridgeLabTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [Tests/UnitTests]
+    dependencies:
+      - target: JavaSwiftBridgeLab
+      - package: LegacySampleMock
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.JavaSwiftBridgeLab.v2.Tests
+  JavaSwiftBridgeLabUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: [Tests/UITests]
+    dependencies:
+      - target: JavaSwiftBridgeLab
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.JavaSwiftBridgeLab.v2.UITests
+schemes:
+  JavaSwiftBridgeLab:
+    build:
+      targets:
+        JavaSwiftBridgeLab: all
+    test:
+      targets: [JavaSwiftBridgeLabTests, JavaSwiftBridgeLabUITests]
