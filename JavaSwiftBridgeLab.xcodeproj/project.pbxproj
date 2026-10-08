@@ -118,6 +118,14 @@
 		FCCACF1CB0F4AB39CDA18824 /* SampleBoardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleBoardUITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		80FA7DEA3077C66E002DA69F /* Notes */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Notes;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		77136F6EA8F2F62A3FC28495 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -141,6 +149,7 @@
 		0A6EDEA1DC1BD8B373204412 /* SampleBoard */ = {
 			isa = PBXGroup;
 			children = (
+				80FA7DEA3077C66E002DA69F /* Notes */,
 				A55D4076F6F4221206EBA114 /* SampleBoardAssembly.swift */,
 				7E613948FCF2D2CF42EBCD87 /* SampleBoardScene.swift */,
 				3BF7706627C11A7EA1AB42B5 /* Agent */,
@@ -372,6 +381,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				80FA7DEA3077C66E002DA69F /* Notes */,
 			);
 			name = JavaSwiftBridgeLab;
 			packageProductDependencies = (
